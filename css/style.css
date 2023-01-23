@@ -177,6 +177,7 @@ header
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   padding-bottom: 55px;
+  padding-top: 40px;
 }
 .header .header_container .header_upper .header_list li {
   margin-bottom: 10px;
