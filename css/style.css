@@ -1,0 +1,864 @@
+@charset "UTF-8";
+/* リンクの設定 */
+a, a:visited, a:active, a:hover {
+  text-decoration: none;
+}
+/*リストスタイル設定*/
+ul, ol {
+  list-style: none;
+}
+
+/*共通部分*/
+.title {
+  font-family: Oswald, sans-serif;
+  color: #000;
+  height: 130px;
+}
+.title h1 {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 21px;
+  padding-top: 75px;
+  padding-bottom: 25px;
+}
+.title img {
+  width: 120px;
+  position: absolute;
+  top: 25px;
+}
+.title .slash {
+  width: 50px;
+  border-top: #000 1px solid;
+  -webkit-transform: rotate(55deg);
+          transform: rotate(55deg);
+  position: absolute;
+  left: 46%;
+  top: 130px;
+  z-index: 60;
+}
+
+.slide {
+  padding-bottom: 10px;
+  background-color: #F0F0F0;
+}
+.slide .slick img {
+  height: 230px;
+  width: 100%;
+}
+
+.title_2 h1 {
+  color: #fff;
+  font-family: Oswald, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  padding-bottom: 20px;
+}
+.title_2 img {
+  width: 75px;
+  position: absolute;
+  top: 5px;
+  right: -5px;
+  z-index: 40;
+}
+
+.btn a {
+  background-color: #fff;
+  color: #000;
+  width: 100%;
+  height: 40px;
+  font-family: Oswald, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 40px;
+  text-align: center;
+  display: inline-block;
+}
+.btn a span {
+  line-height: 40px;
+  float: right;
+  padding-right: 15px;
+  font-size: 15px;
+}
+
+.all_container {
+  position: relative;
+  overflow: hidden;
+}
+
+.loader_container {
+  background-color: black;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  z-index: 1001;
+}
+
+.loader {
+  border: 1px solid #fafafa;
+  border-radius: 50%;
+  border-top: 1px solid #000;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    opacity: 1;
+  }
+  65% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+    opacity: 0.4;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    opacity: 1;
+  }
+  65% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+    opacity: 0.4;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+/*========================
+header
+========================*/
+.header {
+  position: absolute;
+}
+.header .header_container .header_upper {
+  width: 215px;
+  height: 100vh;
+  background-color: #000;
+  color: #fff;
+  position: fixed;
+  overflow: hidden;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  transition: all 0.3s ease;
+  padding-left: 40px;
+  padding-top: 95px;
+}
+.header .header_container .header_upper .header_list {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  padding-bottom: 55px;
+}
+.header .header_container .header_upper .header_list li {
+  margin-bottom: 10px;
+  font-family: Oswald, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+}
+.header .header_container .header_upper .header_list li a {
+  color: #fff;
+}
+.header .header_container .header_upper .header_list li:nth-of-type(5) {
+  margin-bottom: 60px;
+}
+.header .header_container .header_upper .header_list li:last-of-type {
+  margin-bottom: 0;
+  border: #fff 1px solid;
+  padding-left: 5px;
+  padding-right: 5px;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 29px;
+}
+.header .header_container .header_upper.active {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+.header .header_container .hamburger {
+  width: 60px;
+  height: 60px;
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  transition: 0.2s;
+  opacity: 1;
+  /* 1本目の線の位置を設定 */
+  /* 2本目の線の位置を設定 */
+  /* 3本目の線の位置を設定 */
+}
+.header .header_container .hamburger:hover {
+  opacity: 0.7;
+}
+.header .header_container .hamburger span {
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  left: 20px;
+  transition: 0.3s ease-in-out;
+}
+.header .header_container .hamburger span:nth-child(1) {
+  top: 23px;
+}
+.header .header_container .hamburger span:nth-child(2) {
+  top: 30px;
+}
+.header .header_container .hamburger span:nth-child(3) {
+  top: 37px;
+}
+.header .header_container .hamburger.active span:nth-child(1) {
+  top: 30px;
+  left: 20px;
+  background: #fff;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.header .header_container .hamburger.active span:nth-child(2),
+.header .header_container .hamburger.active span:nth-child(3) {
+  top: 30px;
+  background: #fff;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+/*---------------
+hero
+-----------------*/
+.hero .hero_container {
+  position: relative;
+  /*上に上がる動き*/
+  /*下に下がる動き*/
+}
+.hero .hero_container .hero_img {
+  position: relative;
+  width: 100%;
+  /*幅、高さは任意*/
+  height: 100vh;
+  margin: auto;
+  overflow: hidden;
+}
+.hero .hero_container .hero_img .bgImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  -webkit-animation: bgAnime 20s infinite;
+          animation: bgAnime 20s infinite;
+  -webkit-transform: scale(120%, 120%);
+          transform: scale(120%, 120%);
+}
+.hero .hero_container .hero_img .src1 {
+  background-image: url(../img/mv_bg01.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.hero .hero_container .hero_img .src2 {
+  background-image: url(../img/mv_bg02.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+}
+.hero .hero_container .hero_img .src3 {
+  background-image: url(../img/mv_bg03.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  -webkit-animation-delay: 10s;
+          animation-delay: 10s;
+}
+.hero .hero_container .hero_img .src4 {
+  background-image: url(../img/mv_bg04.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  -webkit-animation-delay: 15s;
+          animation-delay: 15s;
+}
+.hero .hero_container .hero_logo img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 180px;
+  z-index: 1002;
+  display: none;
+}
+.hero .hero_container a {
+  display: none;
+}
+.hero .hero_container .bottom_logo {
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  z-index: 999;
+}
+.hero .hero_container .bottom_logo img {
+  width: 50px;
+}
+.hero .hero_container .bottom_logo.UpMove {
+  -webkit-animation: UpAnime 0.5s forwards;
+          animation: UpAnime 0.5s forwards;
+}
+.hero .hero_container .bottom_logo.DownMove {
+  -webkit-animation: DownAnime 0.5s forwards;
+          animation: DownAnime 0.5s forwards;
+}
+
+@-webkit-keyframes UpAnime {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes UpAnime {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@-webkit-keyframes DownAnime {
+  from {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+  }
+}
+@keyframes DownAnime {
+  from {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+  }
+}
+@-webkit-keyframes bgAnime {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  60% {
+    -webkit-transform: scale(100%, 100%);
+            transform: scale(100%, 100%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes bgAnime {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  60% {
+    -webkit-transform: scale(100%, 100%);
+            transform: scale(100%, 100%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/*========================
+main concept
+========================*/
+.concept .concept_container {
+  position: relative;
+}
+.concept .concept_container .title img {
+  right: -20px;
+}
+.concept .concept_container .concept_bg {
+  background-color: #ECECEC;
+  padding-bottom: 40px;
+}
+.concept .concept_container .concept_bg img {
+  width: 100%;
+  height: 230px;
+  padding-bottom: 30px;
+}
+.concept .concept_container .concept_bg .concept_text {
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #fff;
+  padding: 30px 20px 15px 20px;
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "ＭＳ ゴシック", sans-serif;
+}
+.concept .concept_container .concept_bg .concept_text h3 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 25px;
+  padding-bottom: 10px;
+}
+.concept .concept_container .concept_bg .concept_text p {
+  padding-bottom: 5px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+/*========================
+main cafe
+========================*/
+.cafe .cafe_container {
+  position: relative;
+}
+.cafe .cafe_container .title img {
+  left: 0;
+}
+
+/*--------------
+menu
+---------------*/
+.cafe_menu {
+  padding-bottom: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #F0F0F0;
+  height: 700px;
+}
+.cafe_menu .menu_container_all {
+  display: flex;
+  padding: 30px 20px;
+  background-color: #fff;
+  height: 670px;
+}
+.cafe_menu .menu_container_all .menu_title {
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "ＭＳ ゴシック", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.cafe_menu .menu_container_all .menu_title li .ma1 {
+  border-top-left-radius: 10px;
+  background-color: #fff;
+  color: #000;
+}
+.cafe_menu .menu_container_all .menu_title li .ma4 {
+  border-bottom-left-radius: 10px;
+}
+.cafe_menu .menu_container_all .menu_title li a {
+  width: 100%;
+  display: inline-block;
+  padding-left: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  background-color: #000;
+  color: #fff;
+  white-space: nowrap;
+}
+.cafe_menu .menu_container_all .menu_title li a.active {
+  background-color: #fff;
+  color: #000;
+}
+.cafe_menu .menu_container_all .menu_title li .ma1.active2 {
+  background-color: #000;
+  color: #fff;
+}
+.cafe_menu .menu_container_all .menu_all {
+  position: relative;
+  width: 100%;
+  margin-left: 40px;
+}
+.cafe_menu .menu_container_all .menu_all .menu {
+  visibility: hidden;
+  position: absolute;
+  opacity: 0;
+  transition: all 1s;
+}
+.cafe_menu .menu_container_all .menu_all .menu_1 {
+  visibility: visible;
+  opacity: 1;
+}
+.cafe_menu .menu_container_all .menu_all .menu_1.active {
+  visibility: hidden;
+  opacity: 0;
+}
+.cafe_menu .menu_container_all .menu_all .menu_2.active {
+  visibility: visible;
+  opacity: 1;
+}
+.cafe_menu .menu_container_all .menu_all .menu_3.active {
+  visibility: visible;
+  opacity: 1;
+}
+.cafe_menu .menu_container_all .menu_all .menu_4.active {
+  visibility: visible;
+  opacity: 1;
+}
+.cafe_menu .menu_container_all .menu_all .menu_container {
+  border: #000 1px solid;
+  color: #555;
+  padding: 30px 15px;
+  overflow-y: scroll;
+  width: 100%;
+  height: 670px;
+  box-sizing: border-box;
+}
+.cafe_menu .menu_container_all .menu_all .menu_container .menu_p {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  padding-bottom: 20px;
+}
+.cafe_menu .menu_container_all .menu_all .menu_container .menu_content {
+  display: flex;
+  position: relative;
+  padding-bottom: 20px;
+}
+.cafe_menu .menu_container_all .menu_all .menu_container .menu_content img {
+  width: 95px;
+}
+.cafe_menu .menu_container_all .menu_all .menu_container .menu_content .menu_text {
+  padding-top: 15px;
+  padding-left: 20px;
+  padding-bottom: 35px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 95px;
+}
+.cafe_menu .menu_container_all .menu_all .menu_container .menu_content .menu_text h2 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 23px;
+}
+.cafe_menu .menu_container_all .menu_all .menu_container .menu_content .menu_text p {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+/*========================
+main salon
+========================*/
+.salon .salon_container {
+  position: relative;
+}
+.salon .salon_container .title img {
+  right: 0;
+}
+/*----------
+salon_menu
+----------*/
+.salon_menu {
+  background-color: #f0f0f0;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+}
+.salon_menu .salon_wrap {
+  padding: 30px 15px 0 15px;
+  background-color: #fff;
+  margin-bottom: 10px;
+  height: 730px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.salon_menu .salon_wrap .gender h2 {
+  font-family: Lato, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 17px;
+  text-align: center;
+  padding-bottom: 25px;
+}
+.salon_menu .salon_wrap .salon_menu_content {
+  display: grid;
+  grid-template-columns: repeat 2, auto;
+  justify-content: space-between;
+}
+.salon_menu .salon_wrap .salon_menu_content p {
+  padding-bottom: 10px;
+}
+.salon_menu .salon_wrap .salon_menu_content .cut {
+  font-family: Lato, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 13px;
+  grid-column: 1;
+  grid-row: 1;
+}
+.salon_menu .salon_wrap .salon_menu_content .price {
+  font-family: Lato, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 13px;
+  grid-column: 2;
+  grid-row: 1;
+  text-align: right;
+}
+.salon_menu .salon_wrap .salon_menu_content .other .other_text {
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "ＭＳ ゴシック", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #7f7f7f;
+  grid-column: 1/3;
+  grid-row: 2;
+  padding-bottom: 5px;
+  width: 100%;
+}
+.salon_menu .salon_text {
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "ＭＳ ゴシック", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #7f7f7f;
+  padding-bottom: 5px;
+}
+
+/*========================
+news
+========================*/
+.news {
+  background-color: #232323;
+}
+.news .news_container {
+  padding: 35px 20px 40px 20px;
+  position: relative;
+}
+.news .news_wrap {
+  display: grid;
+  grid-template-columns: repeat 2, 1fr;
+  gap: 60px 10px;
+  padding-bottom: 75px;
+}
+.news .news_wrap .news_content a:hover {
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+.news .news_wrap .news_content img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+  -webkit-filter: brightness(50%);
+          filter: brightness(50%);
+  margin-bottom: 5px;
+}
+.news .news_wrap .news_content .np1 {
+  color: #fff;
+  font-family: Lato, sans-serif;
+  font-style: italic;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 10px;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+.news .news_wrap .news_content .np2 {
+  color: #fff;
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "ＭＳ ゴシック", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 18px;
+  text-decoration: none;
+}
+.news .news_wrap .nc1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+.news .news_wrap .nc1 img {
+  background-color: #333;
+}
+.news .news_wrap .nc2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+.news .news_wrap .nc3 {
+  grid-column: 1;
+  grid-row: 2;
+}
+.news .news_wrap .nc3 img {
+  background-color: #333;
+}
+.news .news_wrap .nc4 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/*========================
+access
+========================*/
+.access {
+  position: relative;
+}
+.access .access_wrap .access_container {
+  padding: 35px 20px;
+}
+.access .access_wrap .access_container .title_2 h1 {
+  color: #000;
+  padding-bottom: 15px;
+}
+.access .access_wrap .access_container .google_map {
+  padding-bottom: 15px;
+}
+.access .access_wrap .access_container .google_map iframe {
+  width: 100%;
+  height: 235px;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+.access .access_wrap .access_container .access_text h2 {
+  font-family: Oswald, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+  padding-bottom: 15px;
+}
+.access .access_wrap .access_container .access_text .address {
+  padding-bottom: 15px;
+}
+.access .access_wrap .access_container .access_text .address p {
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "ＭＳ ゴシック", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 19px;
+}
+.access .access_wrap .access_container .access_text .time {
+  padding-bottom: 15px;
+}
+.access .access_wrap .access_container .access_text .time h3 {
+  font-family: Oswald, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 19px;
+  padding-bottom: 5px;
+}
+.access .access_wrap .access_container .access_text .time .time_box {
+  display: flex;
+}
+.access .access_wrap .access_container .access_text .time .time_box p {
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "ＭＳ ゴシック", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 19px;
+}
+.access .access_wrap .access_container .access_text .time .time_box .salon_cafe {
+  padding-right: 30px;
+}
+.access .access_wrap .access_container .btn a {
+  background-color: #000;
+  color: #fff;
+}
+
+/*========================
+footer
+========================*/
+footer {
+  background-color: #000;
+}
+footer .footer_container {
+  padding-top: 40px;
+  padding-bottom: 15px;
+  margin: 0 auto;
+  text-align: center;
+}
+footer .footer_container .footer_logo img {
+  width: 100px;
+  padding-bottom: 20px;
+}
+footer .footer_container .sns {
+  padding-bottom: 25px;
+}
+footer .footer_container .sns ul {
+  display: flex;
+  justify-content: center;
+  gap: 0 20px;
+}
+footer .footer_container .sns ul li a .desvg path {
+  fill: #fff;
+  width: 30px;
+  height: 30px;
+  stroke-width: 1;
+}
+footer .footer_container small {
+  font-family: Lato, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #fff;
+}
+/*# sourceMappingURL=style.css.map */
